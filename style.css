@@ -1,3 +1,5 @@
-.easy{background-color: aquamarine;}
-.medium{background-color: bisque;}
-.hard{background-color: rgb(255, 63, 63);}
+
+/*  MATCHED BOX COLORS TO DIFFICULTY */
+.easy { background-color: #9ae4ab; color: #28803d; border: 2px solid #5ba96e; } /* Light Green */
+.medium { background-color: #c19c2e; color: #4e4015; border: 2px solid #6e5c26; } /* Light Yellow */
+.hard { background-color: #c6adaf; color: #561118; border: 2px solid #d03b4a; } /* Light Red */
