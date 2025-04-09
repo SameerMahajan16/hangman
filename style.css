@@ -1,44 +1,57 @@
 /* Global Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f7f7f7;
-    color: #333;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Difficulty Buttons */
-  .difficulty-btn {
-    font-size: 1.2rem;
-    padding: 15px 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
-  
-  .difficulty-btn:hover {
-    transform: scale(1.1);
-  }
-  
-  .difficulty-btn:focus {
-    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
-  }
-  
-  /* Background and Button Styling */
-  .bg-light {
-    background-color: #f4f8f4 !important;
-  }
-  
-  /* Footer Styling */
-  footer {
-    background-color: #343a40;
-    color: #ffffff;
-    font-size: 0.9rem;
-    text-align: center;
-    padding: 10px;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Difficulty Buttons */
+.difficulty-btn {
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.difficulty-btn:hover {
+  transform: scale(1.1);
+}
+
+.difficulty-btn:focus {
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+/* Background and Button Styling */
+.bg-light {
+  background-color: #f4f8f4 !important;
+}
+
+/* Footer Styling */
+footer {
+  background-color: #343a40;
+  color: #ffffff;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Lives Styling */
+#lives {
+  margin-top: 20px;
+}
+
+.life {
+  margin: 0 5px;
+}

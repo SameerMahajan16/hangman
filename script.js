@@ -21,6 +21,8 @@ let wrongGuesses = 0;
 let guessedLetters = [];
 const maxMistakes = 6;
 let gameEnded = false;
+let lives = 6; // Number of lives
+let lifeElements = document.querySelectorAll('.life');
 
 // Sound effects
 const correctSound = new Audio('correct.mp3');
@@ -86,12 +88,18 @@ function updateDifficultyDisplay(level) {
 function updateUI() {
   document.getElementById('wordDisplay').textContent = displayedWord.split('').join('  ');
   document.getElementById('wrongLetters').textContent = `Wrong Guesses: ${guessedLetters.filter(letter => !selectedWord.includes(letter)).join(', ')}`;
-  updateHealthDisplay();
+  updateLives();
 }
 
-// Update health display
-function updateHealthDisplay() {
-  document.getElementById('shamrock').src = `imgs/shamrock${6 - wrongGuesses}.jpg`;
+// Update lives display
+function updateLives() {
+  for (let i = 0; i < lifeElements.length; i++) {
+    if (i < lives) {
+      lifeElements[i].style.visibility = 'visible';
+    } else {
+      lifeElements[i].style.visibility = 'hidden';
+    }
+  }
 }
 
 // Handle letter guess
@@ -153,9 +161,12 @@ function updateCorrectGuess(guessedLetter) {
 // Handle wrong guesses
 function updateWrongGuess(guessedLetter) {
   wrongGuesses++;
+  lives--; // Decrease a life on wrong guess
+  updateLives(); // Update life display
+
   updateUI();
 
-  if (wrongGuesses === maxMistakes) {
+  if (lives === 0) {
     endGame(false);
   }
 }
@@ -164,21 +175,8 @@ function updateWrongGuess(guessedLetter) {
 function endGame(won) {
   gameEnded = true;
   let message = won ? 'Congratulations! You guessed the word!' : `Game Over! The word was: ${selectedWord}`;
-  document.getElementById('gameArea').innerHTML = `<h2>${message}</h2>`;
-
-  document.getElementById('restartBtn').classList.remove('d-none'); // Show restart button
-}
-
-// Reset the game
-function resetGame() {
-  gameEnded = false;
-  wrongGuesses = 0;
-  guessedLetters = [];
-  document.getElementById('difficultySelection').classList.remove('d-none');
-  document.getElementById('restartBtn').classList.add('d-none');
-  document.getElementById('gameArea').classList.add('d-none');
-  document.getElementById('difficultyBox').classList.add('d-none');
-  document.getElementById('letterInput').value = '';
+  alert(message);
+  document.getElementById('restartBtn').classList.remove('d-none');
 }
 
 // Restart the game without reloading the page
@@ -191,7 +189,7 @@ function restartGame() {
 
 // Event listener for Enter key press to submit guess
 document.getElementById('letterInput').addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
-    guessLetter();
+  if (event.key === 'Enter' && !gameEnded) { // Ensure the game hasn't ended
+    guessLetter(); // This will trigger the guessLetter function when Enter is pressed
   }
 });
